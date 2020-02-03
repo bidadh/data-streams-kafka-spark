@@ -1,19 +1,19 @@
 package com.ideabaker.samples.stream.kafkaspark.datacollection
 
+import com.ideabaker.samples.stream.kafkaspark.datacollection.config.Bindings
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
-import org.springframework.integration.channel.NullChannel
 import org.springframework.integration.config.EnableIntegration
 import org.springframework.integration.dsl.IntegrationFlow
 import org.springframework.integration.dsl.IntegrationFlows
 import org.springframework.integration.dsl.MessageChannels
 import org.springframework.integration.dsl.Transformers
+import org.springframework.integration.handler.LoggingHandler
 import org.springframework.integration.websocket.ClientWebSocketContainer
 import org.springframework.integration.websocket.IntegrationWebSocketContainer
 import org.springframework.integration.websocket.inbound.WebSocketInboundChannelAdapter
 import org.springframework.messaging.MessageChannel
-import org.springframework.messaging.MessageHeaders
 import org.springframework.web.socket.client.WebSocketClient
 import org.springframework.web.socket.client.jetty.JettyWebSocketClient
 
@@ -42,15 +42,11 @@ class DataCollectionApplication {
 	fun logChannel(): MessageChannel = MessageChannels.direct().get()
 
 	@Bean
-	fun handlerFlow(): IntegrationFlow {
+	fun handlerFlow(bindings: Bindings): IntegrationFlow {
 		return IntegrationFlows.from(logChannel())
 				.transform(Transformers.fromJson())
-				.handle { payload: Any, headers: MessageHeaders? ->
-					println(payload)
-					println(headers)
-					println("--------")
-				}
-				.channel(NullChannel())
+				.log(LoggingHandler.Level.WARN, "RSVP")
+				.channel(bindings.rsvpsOutputChannel())
 				.get()
 	}
 
