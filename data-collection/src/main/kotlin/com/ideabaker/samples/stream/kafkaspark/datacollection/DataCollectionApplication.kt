@@ -34,16 +34,16 @@ class DataCollectionApplication {
 	@Bean
 	fun meetupRsvpWSInboundChannelAdapter(clientWebSocketContainer: IntegrationWebSocketContainer): WebSocketInboundChannelAdapter {
 		val webSocketInboundChannelAdapter = WebSocketInboundChannelAdapter(clientWebSocketContainer)
-		webSocketInboundChannelAdapter.outputChannel = logChannel()
+		webSocketInboundChannelAdapter.outputChannel = rsvpsChannel()
 		return webSocketInboundChannelAdapter
 	}
 
 	@Bean
-	fun logChannel(): MessageChannel = MessageChannels.direct().get()
+	fun rsvpsChannel(): MessageChannel = MessageChannels.direct().get()
 
 	@Bean
 	fun handlerFlow(bindings: Bindings): IntegrationFlow {
-		return IntegrationFlows.from(logChannel())
+		return IntegrationFlows.from(rsvpsChannel())
 				.transform(Transformers.fromJson())
 				.log(LoggingHandler.Level.WARN, "RSVP")
 				.channel(bindings.rsvpsOutputChannel())
