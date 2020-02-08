@@ -1,0 +1,29 @@
+spring.cloud.stream:
+  bindings:
+    read-in-0:
+      destination: rsvps
+  kafka:
+    streams:
+      bindings:
+        read-in-0:
+          consumer:
+            nativeDecoding: false
+            valueSerde: org.springframework.kafka.support.serializer.JsonSerde
+      binder:
+        configuration:
+          commit.interval.ms: 100
+          default:
+            key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+##Enable metrics
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics
+##Enable logging to debug for spring kafka config
+logging:
+  level:
+    org.springframework.kafka: DEBUG
+server:
+  port: 8081

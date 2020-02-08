@@ -1,0 +1,104 @@
+{
+    "venue": {
+        "venue_name": "Pickle Barrel Atrium (Dundas Subway Station)",
+        "lon": -79.383186,
+        "lat": 43.653225,
+        "venue_id": 12902332
+    },
+    "visibility": "public",
+    "response": "yes",
+    "guests": 5,
+    "member": {
+        "member_id": 15405481,
+        "other_services": {
+            "twitter": {
+                "identifier": "@CCbySarah"
+            },
+            "facebook": {
+                "identifier": "331101213"
+            }
+        },
+        "photo": "https://secure.meetupstatic.com/photos/member/c/2/5/2/thumb_242929746.jpeg",
+        "member_name": "Sarah (Games & Pubs)"
+    },
+    "rsvp_id": 1828148713,
+    "mtime": 1581138703588,
+    "event": {
+        "event_name": "Drinking Games Night (coed)",
+        "event_id": "268554746",
+        "time": 1584831600000,
+        "event_url": "https://www.meetup.com/ProfessionalYoungWomenOfToronto/events/268554746/"
+    },
+    "group": {
+        "group_topics": [
+            {
+                "urlkey": "singles",
+                "topic_name": "Singles"
+            },
+            {
+                "urlkey": "nightlife",
+                "topic_name": "Nightlife"
+            },
+            {
+                "urlkey": "wellness",
+                "topic_name": "Wellness"
+            },
+            {
+                "urlkey": "women",
+                "topic_name": "Women's Social"
+            },
+            {
+                "urlkey": "entrepreneurship",
+                "topic_name": "Entrepreneurship"
+            },
+            {
+                "urlkey": "socialnetwork",
+                "topic_name": "Social Networking"
+            },
+            {
+                "urlkey": "newintown",
+                "topic_name": "New In Town"
+            },
+            {
+                "urlkey": "fun-times",
+                "topic_name": "Fun Times"
+            },
+            {
+                "urlkey": "self-improvement",
+                "topic_name": "Self-Improvement"
+            },
+            {
+                "urlkey": "professional-networking",
+                "topic_name": "Professional Networking"
+            },
+            {
+                "urlkey": "social",
+                "topic_name": "Social"
+            },
+            {
+                "urlkey": "women-entrepreneurs",
+                "topic_name": "Women Entrepreneurs"
+            },
+            {
+                "urlkey": "womens-empowerment",
+                "topic_name": "Women's Empowerment"
+            },
+            {
+                "urlkey": "womens-business-networking",
+                "topic_name": "Women's Business Networking"
+            },
+            {
+                "urlkey": "girls-night-out",
+                "topic_name": "Girls' Night Out"
+            }
+        ],
+        "group_city": "Toronto",
+        "group_country": "ca",
+        "group_id": 3304952,
+        "group_name": "Professional Young Women's Social & Networking (Toronto)",
+        "group_lon": -79.39,
+        "group_urlname": "ProfessionalYoungWomenOfToronto",
+        "group_state": "ON",
+        "group_lat": 43.68
+    }
+}
