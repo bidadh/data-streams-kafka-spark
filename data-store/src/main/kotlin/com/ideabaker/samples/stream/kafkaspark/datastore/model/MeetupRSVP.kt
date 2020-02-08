@@ -2,11 +2,9 @@ package com.ideabaker.samples.stream.kafkaspark.datastore.model
 
 import com.fasterxml.jackson.annotation.JsonAlias
 import org.springframework.data.annotation.Id
-import org.springframework.data.annotation.TypeAlias
 import org.springframework.data.mongodb.core.mapping.Document
 
-@Document
-@TypeAlias("rsvps")
+@Document("rsvps")
 data class MeetupRSVP (
     @Id
     val id: String?,

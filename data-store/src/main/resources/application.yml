@@ -30,4 +30,4 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/rsvps
+      uri: mongodb://localhost:27017/meetup-db
