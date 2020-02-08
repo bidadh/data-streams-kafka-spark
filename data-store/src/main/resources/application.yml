@@ -22,8 +22,12 @@ management:
       exposure:
         include: metrics
 ##Enable logging to debug for spring kafka config
-logging:
-  level:
-    org.springframework.kafka: DEBUG
+#logging:
+#  level:
+#    org.springframework.kafka: DEBUG
 server:
   port: 8081
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/rsvps
