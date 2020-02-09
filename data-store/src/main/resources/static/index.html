@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="googleMap" style="width:100%;height:400px;"></div>
+<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+
+<script>
+    var map;
+    function myMap() {
+        let center = new google.maps.LatLng(51.508742, -0.120850);
+        console.log(center);
+        let mapProp = {
+            center: center,
+            zoom: 2,
+        };
+        map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+
+    let iconBase = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
+
+    let icons = {
+        parking: {
+            icon: iconBase + 'parking_lot_maps.png'
+        },
+        library: {
+            icon: iconBase + 'library_maps.png'
+        },
+        info: {
+            icon: iconBase + 'info-i_maps.png'
+        }
+    };
+
+    let markers = [];
+
+    if(typeof (EventSource) !== 'undefined') {
+        let source = new EventSource("/rsvps", {headers: "Content-Type: text/event-stream"});
+        source.onmessage = function (event) {
+            let data = JSON.parse(event.data);
+            let venue = data.venue;
+            if((typeof (venue) === 'undefined') || venue == null) {
+                console.warn("received NULL!");
+                return;
+            }
+
+            let group = data.group;
+            if((typeof (group) === 'undefined') || group == null) {
+                console.warn("received NULL! for group");
+            }
+            let label = group.country;
+
+            let position = new google.maps.LatLng(venue.lat, venue.lon);
+
+            let marker = new google.maps.Marker({
+                position: position,
+                type: icons.info.icon,
+                map: map,
+                label: label
+            });
+
+            console.log("Adding a marker to " + label);
+
+            markers.push(marker);
+
+            let markerCluster = new MarkerClusterer(map, markers,
+                    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+        }
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8mDx_lgx_SJZEwtoJcT1cJZafd0lL0UU&callback=myMap"></script>
+
+</body>
+</html>

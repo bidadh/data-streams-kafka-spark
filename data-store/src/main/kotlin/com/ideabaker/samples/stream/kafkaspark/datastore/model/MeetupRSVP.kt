@@ -23,7 +23,11 @@ data class MeetupRSVP (
     val mtime: Long,
     val event: Event?,
     val group: Group?
-)
+) {
+    companion object {
+        const val TIME = "mtime"
+    }
+}
 
 data class Venue (
     @JsonAlias("venue_id")
